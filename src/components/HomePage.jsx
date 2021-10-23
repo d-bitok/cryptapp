@@ -13,16 +13,16 @@ import { Link } from "react-router-dom";
 
 import CryptoCurrencies from "./CryptoCurrencies";
 import News from "./News"
+import Loader from "./Loader";
 
 const { Title } = Typography;
 
 const HomePage = () => {
     const { data, isFetching } = useGetCryptosQuery(10);
     const globalStats = data?.data?.stats;
-
     
-    if (isFetching) console.log('Fetching ...');
-    console.log(data);
+    if (isFetching) return <Loader />;
+    // console.log(data);
 
     return (
         <>

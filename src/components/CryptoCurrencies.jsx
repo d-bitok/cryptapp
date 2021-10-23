@@ -3,6 +3,7 @@ import millify from "millify";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import Loader from "./Loader";
 
 export default function CryptoCurrencies ({ simplified }) {
 
@@ -19,14 +20,14 @@ export default function CryptoCurrencies ({ simplified }) {
         setCryptos(filteredData);
     }, [cryptosList, searchTerm]);
 
-    if (isFetching) console.log('Fetching Data ...');
-    console.log(cryptosList)
+    if (isFetching) return <Loader />;
+    // console.log(cryptosList)
 
     return (
         <>
             {!simplified && (
                 <div className="search-crypto">
-                    <Input placeholder="Search CryptoCurrency" onChange={(e) => setSearchTerm(e.target.value.toLocaleLowerCase())} />
+                    <Input placeholder="Search CryptoCurrency" onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
                 </div>
             )}
             <Row gutter={[32, 32]} className="crypto-card-container">
