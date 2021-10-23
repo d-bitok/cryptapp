@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "build",
+    "site": "cryptapp-41c50",
     "ignore": [
       "firebase.json",
       "**/.*",
